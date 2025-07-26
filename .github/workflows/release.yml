@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
-  
+  contents: write  # needed for creating tags and releases
+
 jobs:
   release:
     if: github.event.pull_request.merged == true
@@ -16,15 +16,27 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # needed to fetch tags
 
-    - name: Set up Java
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        distribution: 'temurin'
-        java-version: '21'
+        distribution: temurin
+        java-version: 21
 
-    - name: Build project
+    - name: Build Maven project
       run: mvn clean package
+
+    - name: Create and push tag
+      env:
+        TAG: v1.${{ github.run_number }}
+      run: |
+        echo "Creating tag $TAG"
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git tag $TAG
+        git push origin $TAG
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
@@ -32,11 +44,11 @@ jobs:
         tag_name: v1.${{ github.run_number }}
         name: Release v1.${{ github.run_number }}
         body: |
-          Release automatically created from merged PR #${{ github.event.pull_request.number }}
+          Automated release from merged PR #${{ github.event.pull_request.number }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Upload JAR
+    - name: Upload JAR to release
       uses: softprops/action-gh-release@v1
       with:
         files: target/*.jar
