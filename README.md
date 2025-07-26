@@ -10,6 +10,8 @@ You can perform the following actions:
 - delete
 - search
 
+Default branch: develop 
+
 # How to
 
 ## Linux
