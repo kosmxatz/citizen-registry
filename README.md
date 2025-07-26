@@ -12,7 +12,7 @@ You can perform the following actions:
 
 # How to
 
-Running linux:
+## Linux
 
 ```bash
 mvn clean compile exec:java
@@ -28,7 +28,7 @@ On another terminal
 curl http://localhost:8080/api/citizens
 ```
 
-Running on windows:
+## Windows
 
 ```powershell
 $body = @{
