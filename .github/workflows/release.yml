@@ -28,10 +28,30 @@ jobs:
     - name: Build Maven project
       run: mvn clean package
 
+    - name: Create and push tag
+      env:
+        TAG: v1.${{ github.run_number }}
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+        git tag $TAG
+        git push origin $TAG
 
-    - name: Upload JAR to release
+    - name: Wait time
+      run: sleep 10
+
+    - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
       with:
-        files: target/*.jar
+        tag_name: v1.${{ github.run_number }}
+        name: Release v1.${{ github.run_number }}
+        body: Automated release from merged PR
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    # - name: Upload JAR to release
+    #   uses: softprops/action-gh-release@v1
+    #   with:
+    #     files: target/*.jar
+    #   env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
