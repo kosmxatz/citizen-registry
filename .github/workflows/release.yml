@@ -2,6 +2,7 @@ name: Release on Merge to Main
 
 on:
   pull_request:
+    types: [closed]
     branches: [ main ]
 
 jobs:
