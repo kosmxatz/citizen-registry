@@ -1,0 +1,10 @@
+com/example/JerseyConfig.class
+com/example/service/CitizenService.class
+com/example/exception/GlobalExceptionMapper.class
+com/example/exception/GlobalExceptionMapper$ErrorResponse.class
+com/example/Main.class
+com/example/dao/CitizenDAO.class
+com/example/resource/CitizenResource.class
+com/example/entity/Citizen.class
+com/example/exception/CitizenValidationException.class
+com/example/exception/CitizenNotFoundException.class

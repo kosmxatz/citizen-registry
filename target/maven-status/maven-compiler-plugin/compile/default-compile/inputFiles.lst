@@ -1,0 +1,9 @@
+/home/ldim/Workspace/citizen/src/main/java/com/example/entity/Citizen.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/dao/CitizenDAO.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/exception/CitizenNotFoundException.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/service/CitizenService.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/JerseyConfig.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/Main.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/resource/CitizenResource.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/exception/CitizenValidationException.java
+/home/ldim/Workspace/citizen/src/main/java/com/example/exception/GlobalExceptionMapper.java
